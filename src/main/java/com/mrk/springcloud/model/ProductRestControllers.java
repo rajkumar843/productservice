@@ -1,5 +1,7 @@
 package com.mrk.springcloud.model;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +15,7 @@ import com.mrk.springcloud.repos.ProductRepo;
 
 @RestController
 @RequestMapping("/productapi")
+@Tag(name = "Product APIs", description = "Product Microservice APIs")
 public class ProductRestControllers {
 	
 	@Autowired
@@ -25,6 +28,7 @@ public class ProductRestControllers {
 	
 	
 	@RequestMapping(value = "/products",method = RequestMethod.POST)
+    @Operation(summary = "Create products ")
 	public Product create(@RequestBody Product product ) {
 		 Coupon cupon  =restTemplet.getForObject(couponServiceURL+product.getCouponCode(), Coupon.class);
 		 product.setPrice(product.getPrice().subtract(cupon.getDiscount()));
