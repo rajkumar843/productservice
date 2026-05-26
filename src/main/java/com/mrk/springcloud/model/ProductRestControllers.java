@@ -21,7 +21,6 @@ import com.mrk.springcloud.repos.ProductRepo;
 @Tag(name = "Product APIs", description = "Product Microservice APIs")
 public class ProductRestControllers {
     private static final Logger logger = LoggerFactory.getLogger(ProductRestControllers.class);
-
     @Autowired
     private ProductRepo repo;
     @Autowired
@@ -29,7 +28,6 @@ public class ProductRestControllers {
 
     @Value("${couponservice.url}")
     private String couponServiceURL;
-
 
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     @Operation(summary = "Create products ")
